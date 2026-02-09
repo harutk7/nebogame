@@ -1,0 +1,38 @@
+{
+  "name": "nebogame",
+  "version": "0.1.0",
+  "description": "Match-3 Puzzle RPG - Heavens recreation",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview",
+    "test": "vitest",
+    "lint": "eslint src/",
+    "format": "prettier --write src/"
+  },
+  "dependencies": {
+    "howler": "^2.2.3"
+  },
+  "devDependencies": {
+    "vite": "^5.0.0",
+    "vitest": "^1.0.0",
+    "eslint": "^8.0.0",
+    "prettier": "^3.0.0"
+  },
+  "keywords": [
+    "game",
+    "match-3",
+    "puzzle",
+    "rpg",
+    "heavens",
+    "nebogame",
+    "html5",
+    "canvas"
+  ],
+  "author": "Nebogame Team",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

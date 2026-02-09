@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nebogame
+  labels:
+    app: nebogame
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: nebogame
+  template:
+    metadata:
+      labels:
+        app: nebogame
+    spec:
+      containers:
+      - name: nebogame
+        image: nebogame:latest
+        ports:
+        - containerPort: 80

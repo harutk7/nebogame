@@ -1,0 +1,158 @@
+/* Reset CSS */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #060412;
+  color: #ffffff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+/* CSS Variables */
+:root {
+  --bg-color: #060412;
+  --bg-gradient-start: #0a0820;
+  --bg-gradient-end: #060412;
+  --gem-red: #FF4444;
+  --gem-blue: #4444FF;
+  --gem-green: #44FF44;
+  --gem-yellow: #FFFF44;
+  --gem-purple: #FF44FF;
+  --gem-white: #FFFFFF;
+  --ui-primary: #4a90d9;
+  --ui-secondary: #2d5a8a;
+  --ui-accent: #f0c040;
+  --text-primary: #ffffff;
+  --text-secondary: #a0a0a0;
+  --border-color: rgba(255, 255, 255, 0.2);
+}
+
+/* Game Container */
+#game-container {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  max-width: 480px;
+  max-height: 854px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(180deg, var(--bg-gradient-start) 0%, var(--bg-gradient-end) 100%);
+}
+
+/* Canvas */
+#game-canvas {
+  display: block;
+  width: 100%;
+  height: 100%;
+  image-rendering: pixelated;
+  image-rendering: crisp-edges;
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  #game-container {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+@media (max-height: 854px) {
+  #game-container {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+/* Touch optimization */
+@media (pointer: coarse) {
+  #game-canvas {
+    touch-action: manipulation;
+  }
+}
+
+/* Prevent text selection */
+.no-select {
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+/* Loading overlay */
+.loading-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-color);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  width: 50px;
+  height: 50px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-top-color: var(--ui-accent);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* UI Components */
+.ui-panel {
+  background: rgba(0, 0, 0, 0.7);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 16px;
+  backdrop-filter: blur(10px);
+}
+
+.ui-button {
+  background: linear-gradient(180deg, var(--ui-primary) 0%, var(--ui-secondary) 100%);
+  border: none;
+  border-radius: 8px;
+  color: white;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: transform 0.1s ease, box-shadow 0.1s ease;
+}
+
+.ui-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(74, 144, 217, 0.4);
+}
+
+.ui-button:active {
+  transform: translateY(0);
+  box-shadow: none;
+}

@@ -15,6 +15,8 @@ import {
   RenderLayer
 } from './engine/index.js';
 
+import { GridSystem } from './systems/GridSystem.js';
+
 class Game {
   constructor() {
     this.canvas = null;
@@ -25,6 +27,7 @@ class Game {
     this.inputManager = null;
     this.assetLoader = null;
     this.performanceMonitor = null;
+    this.gridSystem = null;
     
     this.init();
   }
@@ -54,6 +57,19 @@ class Game {
       // Initialize performance monitor
       this.performanceMonitor = new PerformanceMonitor();
       this.performanceMonitor.enable();
+      
+      // Initialize match-3 grid system
+      this.gridSystem = new GridSystem(this.entityManager, this.inputManager);
+      this.gridSystem.init();
+      
+      // Setup match-3 callbacks
+      this.gridSystem.onMatch((matches, score, combo) => {
+        console.log(`Match! Score: ${score}, Combo: ${combo}`);
+      });
+      
+      this.gridSystem.onCombo((combo) => {
+        console.log(`Combo x${combo}!`);
+      });
       
       // Create game loop
       this.gameLoop = new GameLoop(
@@ -87,11 +103,19 @@ class Game {
     this.performanceMonitor.update();
     this.entityManager.update(deltaTime);
     this.stateMachine.update(deltaTime);
+    if (this.gridSystem) {
+      this.gridSystem.update(deltaTime);
+    }
   }
 
   render(deltaTime) {
     // Clear and render via renderer
     this.renderer.render(deltaTime);
+    
+    // Render match-3 grid
+    if (this.gridSystem) {
+      this.gridSystem.render(this.canvas.getContext());
+    }
     
     // Render entities
     this.entityManager.render(this.canvas.getContext());

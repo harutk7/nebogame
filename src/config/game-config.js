@@ -44,4 +44,22 @@ export const GAME_CONFIG = {
   },
 };
 
+export const GemType = {
+  RED: 0,
+  BLUE: 1,
+  GREEN: 2,
+  YELLOW: 3,
+  PURPLE: 4,
+  WHITE: 5,
+};
+
+export const GemColors = {
+  [GemType.RED]: '#FF4444',
+  [GemType.BLUE]: '#4444FF',
+  [GemType.GREEN]: '#44FF44',
+  [GemType.YELLOW]: '#FFFF44',
+  [GemType.PURPLE]: '#FF44FF',
+  [GemType.WHITE]: '#FFFFFF',
+};
+
 export default GAME_CONFIG;
